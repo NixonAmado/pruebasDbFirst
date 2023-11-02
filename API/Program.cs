@@ -1,3 +1,7 @@
+using API.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 internal class Program
 {
     private static async global::System.Threading.Tasks.Task Main(string[] args)
@@ -9,6 +13,7 @@ internal class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        var app = builder.Build();       
         using (var scope = app.Services.CreateScope())
         {
             var services = scope.ServiceProvider;
@@ -27,7 +32,6 @@ internal class Program
         }
 
 
-        var app = builder.Build();
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
